@@ -9,37 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        return HStack(content: {
+        HStack {
             CardView(isFaceUp: true)
             CardView()
-            
-        })
+        }
+        .foregroundColor(.blue)
     }
 }
 
 struct CardView: View {
-    var isFaceUp: Bool = false
+    @State var isFaceUp: Bool = false
     
     var body: some View {
-        return ZStack(content: {
+        ZStack{
+            var base: RoundedRectangle = RoundedRectangle(cornerRadius: 20)
+    
             if isFaceUp {
-                RoundedRectangle(cornerRadius: 20)
+                base
+                    .fill(.white)
+                base
                     .strokeBorder(lineWidth: 10)
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.white)
                 Text("🤡")
                     .font(.largeTitle)
             }
             else{
-                RoundedRectangle(cornerRadius: 20)
+                base.fill()
                     .strokeBorder(lineWidth: 10)
                 Text("🤡")
                     .font(.largeTitle)
             }
-            
-        })
-        .foregroundColor(.orange)
-        .padding()
+        }
+        .onTapGesture {
+            isFaceUp = !isFaceUp
+        }
     }
 }
 

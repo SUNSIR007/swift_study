@@ -12,7 +12,7 @@ struct ContentView: View {
         return HStack(content: {
             CardView(isFaceUp: true)
             CardView()
-            CardView()
+            
         })
     }
 }
